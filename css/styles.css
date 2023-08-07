@@ -1,0 +1,99 @@
+.table {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    --scale: 1;
+    --size: calc(100px * var(--scale));
+    width: var(--size);
+    aspect-ratio: 37/53;
+    display: flex;
+    cursor: pointer;
+}
+
+.card .card__inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    pointer-events: none;
+}
+
+.card .card__inner.red {
+    color: red;
+}
+
+.card .card__inner.black {
+    color: black;
+}
+
+.card .card__front {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    border-radius: calc(var(--size) * 0.06);
+    padding: calc(var(--size) * 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    left: 0;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    transform: rotateY(0deg);
+    border-radius: calc(var(--size) * 0.06);
+    padding: calc(var(--size) * 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+}
+
+.card .card__front .card__value {
+    flex-grow: 1;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    font-size: calc(var(--size) * 0.3);
+    line-height: 100%;
+    font-weight: bold;
+}
+
+.card .card__front .card__suit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(var(--size) * 0.7);
+    font-weight: bold;
+}
+
+.card .card__back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    transition: transform 0.5s;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(var(--size) * 0.7);
+    font-weight: bold;
+    background-color: #fff;
+    backface-visibility: hidden;
+    border-radius: calc(var(--size) * 0.06);
+    padding: calc(var(--size) * 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-image: url('../img/card-back.jpg');
+    background-size: contain;
+}
+
+.card.flipped .card__inner .card__front {
+    transform: rotateY(180deg);
+}
+.card.flipped .card__inner .card__back {
+    transform: rotateY(0deg);
+}
