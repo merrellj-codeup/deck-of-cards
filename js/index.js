@@ -1,7 +1,7 @@
-import Deck from './components/Deck/index.js'
+import Deck from './components/Deck/index.js';
 
 
-(async ()=>{
+(async()=>{
     const table = document.querySelector('#table');
     const deck = new Deck();
     deck.shuffle();
